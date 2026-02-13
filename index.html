@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>joaco // nerv terminal</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    </style>
+</head>
+
+<body>
+    <div class="scanlines"></div>
+    <div class="overlay"></div>
+
+    <div class="terminal-container">
+        <header class="main-header">
+            <div class="lang-controls">
+                <button id="btn-es" class="lang-btn active" onclick="switchLang('es')">[ ESP ]</button>
+                <button id="btn-en" class="lang-btn" onclick="switchLang('en')">[ ENG ]</button>
+            </div>
+            <div class="system-status">
+                <span class="blink">system_ready</span>
+            </div>
+        </header>
+
+        <section class="profile">
+            <div class="avatar-container">
+                <img src="lofi_avatar.png" onerror="this.src='avatar.png'" alt="joaco avatar" class="avatar">
+                <div class="avatar-ring"></div>
+            </div>
+        </section>
+
+        <main>
+            <!-- ABOUT SECTION -->
+            <section class="log-entry">
+                <!-- ESP -->
+                <div data-lang="es">
+                    <div class="terminal-meta">[ status: joaco ] [ 100% sync ]</div>
+                    <h2 class="section-title">sobre mí <span class="cmd-text">[ data log ]</span></h2>
+                    <div class="terminal-text">
+                        <p>soy joaco. la verdad es que me la tomo tranquila. me gusta demasiado laburar y me apasiona el
+                            dinero, así de simple. mi plan de vida es bastante claro: quiero ser astronauta y ver todo
+                            desde arriba. mientras tanto, sigo acá, relajado.</p>
+                        <br>
+                        <p class="highlight">dato curioso: mi sistema inmunológico es de grado militar. no me enfermo
+                            hace 10 años. ni un resfrío, nada. creo que mi ratio de sincronización con la salud es
+                            perfecto.</p>
+                    </div>
+                </div>
+                <!-- ENG -->
+                <div data-lang="en" class="hidden">
+                    <div class="terminal-meta">[ status: joaco ] [ 100% sync ]</div>
+                    <h2 class="section-title">about me <span class="cmd-text">[ data log ]</span></h2>
+                    <div class="terminal-text">
+                        <p>i'm joaco. honestly, i take it easy. i really enjoy working and i'm passionate about money,
+                            simple as that. my life plan is quite clear: i want to be an astronaut and see everything
+                            from above. meanwhile, i'm still here, chill.</p>
+                        <br>
+                        <p class="highlight">fun fact: my immune system is military-grade. i haven't been sick in 10
+                            years. not even a cold, nothing. i think my health sync ratio is perfect.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- WHAT I DO SECTION -->
+            <section class="stacks-entry">
+                <!-- ESP -->
+                <div data-lang="es">
+                    <h2 class="section-title">lo que hago <span class="cmd-text">[ technical report ]</span></h2>
+                    <ul class="stack-list">
+                        <li>> <strong>languages:</strong> hablo español e inglés. fluido, sin vueltas.</li>
+                        <li>> <strong>coding:</strong> programé en python un tiempo. entiendo cómo funciona el código
+                            por dentro.</li>
+                        <li>> <strong>ai project:</strong> con un grupo de la escuela hicimos una app con ia que
+                            transcribe voz. funcionó bien, fue un buen despliegue técnico.</li>
+                    </ul>
+                </div>
+                <!-- ENG -->
+                <div data-lang="en" class="hidden">
+                    <h2 class="section-title">what i do <span class="cmd-text">[ technical report ]</span></h2>
+                    <ul class="stack-list">
+                        <li>> <strong>languages:</strong> i speak spanish and english. fluent, no fuss.</li>
+                        <li>> <strong>coding:</strong> i programmed in python for a while. i understand how code works
+                            internally.</li>
+                        <li>> <strong>ai project log:</strong> built a voice transcription app using ai with my school
+                            team. we handled the whole process from scratch. it just works.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- CONTACT SECTION -->
+            <section class="contact-entry">
+                <!-- ESP -->
+                <div data-lang="es">
+                    <h2 class="section-title">contacto <span class="cmd-text">[ terminal enlace ]</span></h2>
+                    <p class="contact-intro">si quieres hablar de laburo, del espacio o de cómo no enfermarse nunca,
+                        aquí me encuentras:</p>
+                </div>
+                <!-- ENG -->
+                <div data-lang="en" class="hidden">
+                    <h2 class="section-title">contact <span class="cmd-text">[ terminal enlace ]</span></h2>
+                    <p class="contact-intro">if you want to talk about work, space, or how to never get sick, find me
+                        here:</p>
+                </div>
+
+                <div class="link-grid">
+                    <a href="https://x.com/joaandress1" target="_blank" class="terminal-link">> twitter</a>
+                    <a href="https://www.instagram.com/joaandress/" target="_blank" class="terminal-link">>
+                        instagram</a>
+                    <a href="https://github.com/Heisenberg-org" target="_blank" class="terminal-link">> github</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <div data-lang="es">nerv proprietary // system version 2.0.26</div>
+            <div data-lang="en" class="hidden">nerv proprietary // system version 2.0.26</div>
+        </footer>
+    </div>
+
+    <script>
+        function switchLang(lang) {
+            // Update content visibility
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.classList.remove('hidden');
+                } else {
+                    el.classList.add('hidden');
+                }
+            });
+
+            // Update buttons
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            // Update html lang attribute
+            document.documentElement.lang = lang;
+        }
+    </script>
+</body>
+
+</html>
